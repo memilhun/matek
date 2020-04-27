@@ -203,11 +203,12 @@ button {
 	<div id="muveletek_sz">
 	<h3>Végezd el a következő műveleteket:<br/></h3>
 	<script>
+		var szamkor = 20; //milyen szamkorben kell a muveletet vegezni?
 		var a= 0; var b= 0;
 		var osszegc = new Array();
 			for(i=1;i<=10;i++){
-				a=Math.floor(Math.random() * 20) + 1;
-				b=Math.floor(Math.random() * 20) + 1;
+				a=Math.floor(Math.random() * szamkor) + 1;
+				b=Math.floor(Math.random() * szamkor) + 1;
 				document.write("<div class=\"row\"><label for=osszeg>"+a+"+"+b+" = </label><input type=\"number\" name=osszeg id=\"osszeg"+i+"\" class=osszeg></div>");
 				osszegc[i] = a+b;
 			}
@@ -248,10 +249,11 @@ button {
 	<h3>Végezd el a következő műveleteket:<br/></h3>
 	<script>
 		var o1= 0; var o2 = 0;
+		var szamkor = 20; //milyen szamkorben kell a muveletet vegezni?
 		var kivonasc = new Array();
 			for(o=1;o<=10;o++){
-				o2=Math.floor(Math.random() * 20) + 1;
-				o1=Math.floor(Math.random() * 20) + 1;
+				o2=Math.floor(Math.random() * szamkor) + 1;
+				o1=Math.floor(Math.random() * szamkor) + 1;
 				if (o1>o2) {
 					document.write("<div class=\"row\"><label for=kivonas>"+o1+"-"+o2+" = </label><input type=\"number\" id=\"kivonas"+o+"\" name=kivonas class=osszeg></div>");
 					kivonasc[o] = o1-o2;
