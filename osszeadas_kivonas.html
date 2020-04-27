@@ -158,6 +158,7 @@ button {
   letter-spacing: .5px;
   box-shadow: 0 2px 2px 0 #bfbfbf;
 }
+
 </style>
 </head>
 
@@ -170,12 +171,14 @@ button {
 <div id="top_sz"></div>
 <div id="top_o"></div>
 
-<h3 id="kerdes"S>Mit szeretnél gyakorolni?</h3>
+<h3 id="kerdes">Mit szeretnél gyakorolni?</h3>
 <form id="myForm">
+
 <button id="osszeadas" type="button">Összeadás</button>
 <button id="kivonas" type="button">Kivonás</button>
 
-<script>		
+<script>
+
 	document.getElementById('osszeadas').addEventListener('click', function(){
 		document.getElementById('osszeadasdiv').style.display="block";
 		document.getElementById('kivonasdiv').style.display="none";
@@ -201,6 +204,7 @@ button {
 
 <div id="osszeadasdiv" style="display:none">
 	<div id="muveletek_sz">
+	  <input type="hidden" value="" id="szamkorertek">
 	<h3>Végezd el a következő műveleteket:<br/></h3>
 	<script>
 		var szamkor = 20; //milyen szamkorben kell a muveletet vegezni?
@@ -208,7 +212,7 @@ button {
 		var osszegc = new Array();
 			for(i=1;i<=10;i++){
 				a=Math.floor(Math.random() * szamkor) + 1;
-				b=Math.floor(Math.random() * szamkor) + 1;
+				b=Math.floor(Math.random() * (szamkor-a));
 				document.write("<div class=\"row\"><label for=osszeg>"+a+"+"+b+" = </label><input type=\"number\" name=osszeg id=\"osszeg"+i+"\" class=osszeg></div>");
 				osszegc[i] = a+b;
 			}
