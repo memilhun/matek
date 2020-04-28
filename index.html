@@ -1,46 +1,11 @@
 <head>
 <title>Alapműveletek gyakorlás 2. osztályosoknak</title>
 <meta charset="UTF-8">
-<script>
-function init() {
-//localstorage a TOPlistáért
-if (typeof(Storage) !== "undefined") {
-  // szorzás
-  if (localStorage.getItem("top_szorzas") > 0) {
-	var top_szorzas = localStorage.getItem('top_szorzas');
-	if (top_szorzas != "") {
-	   document.getElementById("top_sz").innerHTML = "<span>Eddigi legjobb szorzás eredményed = <span class=badge>" + top_szorzas+"</span>";
-	  } else {
-		top_szorzas = 0;
-		if (top_szorzas != "" && top_szorzas != null) {
-		 localStorage.setItem('top_szorzas', top_szorzas);
-		}
-	  }		  
-  } else {	localStorage.setItem('top_szorzas', '0');}
-// osztás 
-  if (localStorage.getItem("top_osztas") > 0) {
-	var top_osztas = localStorage.getItem('top_osztas');
-	if (top_osztas != "") {
-	   document.getElementById("top_o").innerHTML = "<span>Eddigi legjobb osztás eredményed = <span class=badge>" + top_osztas+"</span>";
-	  } else {
-		top_osztas = 0;
-		if (top_osztas != "" && top_osztas != null) {
-		 localStorage.setItem('top_osztas', top_osztas);
-		}
-	  }		  
-  } else {	localStorage.setItem('top_osztas', '0');}
-	
-} else {
-  // Sorry! No Web Storage support..
-}
-
-}
-</script>
  
  <link rel="stylesheet" href="style.css">
 </head>
 
-<body onload="init()">
+<body>
 <header>
 	<h1>Alapműveletek gyakorlás</h1>
 	<h2>Második osztályosok számára. (v1.0)</h2>

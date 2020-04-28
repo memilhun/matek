@@ -1,15 +1,16 @@
 <head>
 <title>Összeadás és kivonás gyakorlás 2. osztályosoknak</title>
 <meta charset="UTF-8">
-<script>
+<script type="text/javascript">
 function init() {
+
 //localstorage a TOPlistáért
 if (typeof(Storage) !== "undefined") {
-  // szorzás
+  // osszeadas
   if (localStorage.getItem("top_osszeadas") > 0) {
 	var top_osszeadas = localStorage.getItem('top_osszeadas');
 	if (top_osszeadas != "") {
-	   document.getElementById("top_sz").innerHTML = "<span>Eddigi legjobb összeadás eredményed = <span class=badge>" + top_osszeadas+"</span>";
+	   document.getElementById("top_ossz").innerHTML = "<span>Eddigi legjobb összeadás eredményed = <span class=badge>" + top_osszeadas+"</span>";
 	  } else {
 		top_osszeadas = 0;
 		if (top_osszeadas != "" && top_osszeadas != null) {
@@ -17,11 +18,11 @@ if (typeof(Storage) !== "undefined") {
 		}
 	  }		  
   } else {	localStorage.setItem('top_osszeadas', '0');}
-// osztás 
+// kivonas 
   if (localStorage.getItem("top_kivonas") > 0) {
 	var top_kivonas = localStorage.getItem('top_kivonas');
 	if (top_kivonas != "") {
-	   document.getElementById("top_o").innerHTML = "<span>Eddigi legjobb kivonás eredményed = <span class=badge>" + top_kivonas+"</span>";
+	   document.getElementById("top_k").innerHTML = "<span>Eddigi legjobb kivonás eredményed = <span class=badge>" + top_kivonas+"</span>";
 	  } else {
 		top_kivonas = 0;
 		if (top_kivonas != "" && top_kivonas != null) {
@@ -46,8 +47,8 @@ if (typeof(Storage) !== "undefined") {
 	<h2>Második osztályosok számára. (v1.0)</h2>
 </header>
 <div id="content">
-<div id="top_sz"></div>
-<div id="top_o"></div>
+<div id="top_ossz"></div>
+<div id="top_k"></div>
 
 <h3 id="kerdes">Mit szeretnél gyakorolni?</h3>
 <form id="myForm">
@@ -177,7 +178,7 @@ if (typeof(Storage) !== "undefined") {
 
 </form>
 <button type=reset style="display:none" id="resetbutton" onclick="location.reload()">Új számokat kérek</button>
-<p><a href="szorzas_osztas.html">Szorzás, osztás</a>
+<p><a href="index.html">Vissza a nyitólapra</a>
 </div>
 <!-- memil 2020 -->
 	</body>

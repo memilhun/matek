@@ -31,7 +31,7 @@ h3 {
 	font-size: 1.5em;
 	font-weight: 300;
 }
-#top_sz, #top_o {
+#top_sz, #top_o , #top_ossz, #top_k{
 	color: #26a69a;
 	background-color: #fff;
 	line-height: 1.5rem;
