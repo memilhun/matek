@@ -7,29 +7,29 @@ function init() {
 //localstorage a TOPlistáért
 if (typeof(Storage) !== "undefined") {
   // osszeadas
-  if (localStorage.getItem("top_osszeadas") > 0) {
-	var top_osszeadas = localStorage.getItem('top_osszeadas');
+  if (localStorage.getItem("top_osszeadas_10") > 0) {
+	var top_osszeadas = localStorage.getItem('top_osszeadas_10');
 	if (top_osszeadas != "") {
-	   document.getElementById("top_ossz").innerHTML = "<span>Eddigi legjobb összeadás eredményed = <span class=badge>" + top_osszeadas+"</span>";
+	   document.getElementById("top_ossz").innerHTML = "<span>Eddigi legjobb összeadás eredményed 10-es számörben= <span class=badge>" + top_osszeadas_10+"</span>";
 	  } else {
-		top_osszeadas = 0;
-		if (top_osszeadas != "" && top_osszeadas != null) {
-		 localStorage.setItem('top_osszeadas', top_osszeadas);
+		top_osszeadas_10 = 0;
+		if (top_osszeadas_10 != "" && top_osszeadas_10 != null) {
+		 localStorage.setItem('top_osszeadas_10', top_osszeadas_10);
 		}
 	  }		  
-  } else {	localStorage.setItem('top_osszeadas', '0');}
+  } else {	localStorage.setItem('top_osszeadas_10', '0');}
 // kivonas 
-  if (localStorage.getItem("top_kivonas") > 0) {
-	var top_kivonas = localStorage.getItem('top_kivonas');
-	if (top_kivonas != "") {
-	   document.getElementById("top_k").innerHTML = "<span>Eddigi legjobb kivonás eredményed = <span class=badge>" + top_kivonas+"</span>";
+  if (localStorage.getItem("top_kivonas_10") > 0) {
+	var top_kivonas = localStorage.getItem('top_kivonas_10');
+	if (top_kivonas_10 != "") {
+	   document.getElementById("top_k").innerHTML = "<span>Eddigi legjobb kivonás eredményed 10-es számkörben= <span class=badge>" + top_kivonas_10+"</span>";
 	  } else {
-		top_kivonas = 0;
-		if (top_kivonas != "" && top_kivonas != null) {
-		 localStorage.setItem('top_kivonas', top_kivonas);
+		top_kivonas_10 = 0;
+		if (top_kivonas_10 != "" && top_kivonas_10 != null) {
+		 localStorage.setItem('top_kivonas_10', top_kivonas_10);
 		}
 	  }		  
-  } else {	localStorage.setItem('top_kivonas', '0');}
+  } else {	localStorage.setItem('top_kivonas_10', '0');}
 	
 } else {
   // Sorry! No Web Storage support..
@@ -117,8 +117,8 @@ if (typeof(Storage) !== "undefined") {
 				} else {hiba=hiba+1; document.getElementById("osszeg"+j).style.borderColor = "red";}
 			}
 			document.getElementById("eredmeny").innerHTML = "Helyes válaszok száma: "+p+"<br/>Hibás válaszok száma: "+hiba;
-			if (localStorage.getItem("top_osszeadas") < p) {
-				localStorage.setItem('top_osszeadas', p);	
+			if (localStorage.getItem("top_osszeadas_10") < p) {
+				localStorage.setItem('top_osszeadas_10', p);	
 				alert("Ügyes vagy, új rekord:"+p+" pont.");	
 				init();				
 			}
@@ -167,8 +167,8 @@ if (typeof(Storage) !== "undefined") {
 				} else {hiba_o=hiba_o+1;document.getElementById("kivonas"+k).style.borderColor = "red";}
 			}
 			document.getElementById("eredmeny_o").innerHTML = "Helyes válaszok száma: "+p_o+"<br/>Hibás válaszok száma: "+hiba_o;
-			if (localStorage.getItem("top_kivonas") < p_o) {
-				localStorage.setItem('top_kivonas', p_o);
+			if (localStorage.getItem("top_kivonas_10") < p_o) {
+				localStorage.setItem('top_kivonas_10', p_o);
 				init();
 				alert("Ügyes vagy, új rekord:"+p_o+" pont.");
 			}
