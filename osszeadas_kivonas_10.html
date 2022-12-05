@@ -1,0 +1,185 @@
+<head>
+<title>Összeadás és kivonás gyakorlás 10-es számkörben</title>
+<meta charset="UTF-8">
+<script type="text/javascript">
+function init() {
+
+//localstorage a TOPlistáért
+if (typeof(Storage) !== "undefined") {
+  // osszeadas
+  if (localStorage.getItem("top_osszeadas") > 0) {
+	var top_osszeadas = localStorage.getItem('top_osszeadas');
+	if (top_osszeadas != "") {
+	   document.getElementById("top_ossz").innerHTML = "<span>Eddigi legjobb összeadás eredményed = <span class=badge>" + top_osszeadas+"</span>";
+	  } else {
+		top_osszeadas = 0;
+		if (top_osszeadas != "" && top_osszeadas != null) {
+		 localStorage.setItem('top_osszeadas', top_osszeadas);
+		}
+	  }		  
+  } else {	localStorage.setItem('top_osszeadas', '0');}
+// kivonas 
+  if (localStorage.getItem("top_kivonas") > 0) {
+	var top_kivonas = localStorage.getItem('top_kivonas');
+	if (top_kivonas != "") {
+	   document.getElementById("top_k").innerHTML = "<span>Eddigi legjobb kivonás eredményed = <span class=badge>" + top_kivonas+"</span>";
+	  } else {
+		top_kivonas = 0;
+		if (top_kivonas != "" && top_kivonas != null) {
+		 localStorage.setItem('top_kivonas', top_kivonas);
+		}
+	  }		  
+  } else {	localStorage.setItem('top_kivonas', '0');}
+	
+} else {
+  // Sorry! No Web Storage support..
+}
+
+}
+</script>
+ 
+ <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="init()">
+<header>
+	<h1>Összeadás / kivonás gyakorlás</h1>
+	<h2>10-es számkörben</h2>
+</header>
+<div id="content">
+<div id="top_ossz"></div>
+<div id="top_k"></div>
+
+<h3 id="kerdes">Mit szeretnél gyakorolni?</h3>
+<form id="myForm">
+
+<button id="osszeadas" type="button">Összeadás</button>
+<button id="kivonas" type="button">Kivonás</button>
+
+<script>
+
+	document.getElementById('osszeadas').addEventListener('click', function(){
+		document.getElementById('osszeadasdiv').style.display="block";
+		document.getElementById('kivonasdiv').style.display="none";
+		document.getElementById('resetbutton').style.display="inline";
+		document.getElementById("myForm").reset(); 
+		document.getElementById('osszeadas').style.display="none";	
+		document.getElementById('kivonas').style.display="none";	
+		document.getElementById('kerdes').style.display="none";	
+	});
+	document.getElementById('kivonas').addEventListener('click', function(){
+		document.getElementById('kivonasdiv').style.display="block";
+		document.getElementById('osszeadasdiv').style.display="none";
+		document.getElementById('resetbutton').style.display="inline";
+		document.getElementById("myForm").reset(); 
+		document.getElementById('osszeadas').style.display="none";	
+		document.getElementById('kivonas').style.display="none";		
+		document.getElementById('kerdes').style.display="none";			
+	});
+
+</script>
+
+<!-- összeadás -->
+
+<div id="osszeadasdiv" style="display:none">
+	<div id="muveletek_sz">
+	  <input type="hidden" value="" id="szamkorertek">
+	<h3>Végezd el a következő műveleteket:<br/></h3>
+	<script>
+		var szamkor = 10; //milyen szamkorben kell a muveletet vegezni?
+		var a= 0; var b= 0;
+		var osszegc = new Array();
+			for(i=1;i<=10;i++){
+				a=Math.floor(Math.random() * szamkor) + 1;
+				b=Math.floor(Math.random() * (szamkor-a));
+				document.write("<div class=\"row\"><label for=osszeg>"+a+"+"+b+" = </label><input type=\"number\" name=osszeg id=\"osszeg"+i+"\" class=osszeg></div>");
+				osszegc[i] = a+b;
+			}
+	</script>
+	<button id="ellenorzes" type="button">Ellenőrzés</button>
+	<p id="eredmeny"></p>
+
+	<script>		
+		document.getElementById('ellenorzes').addEventListener('click', function(){
+			doStuff();
+			});
+			
+		function doStuff() {
+			var p = 0, hiba = 0;
+			document.getElementById('ellenorzes').style.display="none";
+			var inputs=document.getElementsByTagName('input');
+				for(i=0;i<inputs.length;i++){
+					inputs[i].disabled=true;
+					}   
+			for(j=1;j<=10;j++){
+				if (document.getElementById("osszeg"+j).value == osszegc[j]) {
+					p=p+1; document.getElementById("osszeg"+j).style.borderColor = "green";			
+				} else {hiba=hiba+1; document.getElementById("osszeg"+j).style.borderColor = "red";}
+			}
+			document.getElementById("eredmeny").innerHTML = "Helyes válaszok száma: "+p+"<br/>Hibás válaszok száma: "+hiba;
+			if (localStorage.getItem("top_osszeadas") < p) {
+				localStorage.setItem('top_osszeadas', p);	
+				alert("Ügyes vagy, új rekord:"+p+" pont.");	
+				init();				
+			}
+			}
+	</script>
+	</div>
+</div>
+
+<!-- kivonás -->
+<div id="kivonasdiv" style="display:none">
+	<h3>Végezd el a következő műveleteket:<br/></h3>
+	<script>
+		var o1= 0; var o2 = 0;
+		var szamkor = 10; //milyen szamkorben kell a muveletet vegezni?
+		var kivonasc = new Array();
+			for(o=1;o<=10;o++){
+				o2=Math.floor(Math.random() * szamkor) + 1;
+				o1=Math.floor(Math.random() * szamkor) + 1;
+				if (o1>o2) {
+					document.write("<div class=\"row\"><label for=kivonas>"+o1+"-"+o2+" = </label><input type=\"number\" id=\"kivonas"+o+"\" name=kivonas class=osszeg></div>");
+					kivonasc[o] = o1-o2;
+				} else {
+					document.write("<div class=\"row\"><label for=kivonas>"+o2+"-"+o1+" = </label><input type=\"number\" id=\"kivonas"+o+"\" name=kivonas class=osszeg></div>");
+					kivonasc[o] = o2-o1;}
+			}
+	</script>
+	<button id="ellenorzes_o" type="button">Ellenőrzés</button>
+
+	<p id="eredmeny_o"></p>
+
+	<script>		
+		document.getElementById('ellenorzes_o').addEventListener('click', function(){
+			doStuff_o();
+			});
+			
+		function doStuff_o() {		
+			document.getElementById('ellenorzes_o').style.display="none";
+			var inputs=document.getElementsByName('kivonas');
+				for(i=0;i<inputs.length;i++){
+					inputs[i].disabled=true;
+					}   
+			var p_o = 0, hiba_o = 0;
+			for(k=1;k<=10;k++){
+				if (document.getElementById("kivonas"+k).value == Math.floor(kivonasc[k])) {
+					p_o=p_o+1; document.getElementById("kivonas"+k).style.borderColor = "green";
+				} else {hiba_o=hiba_o+1;document.getElementById("kivonas"+k).style.borderColor = "red";}
+			}
+			document.getElementById("eredmeny_o").innerHTML = "Helyes válaszok száma: "+p_o+"<br/>Hibás válaszok száma: "+hiba_o;
+			if (localStorage.getItem("top_kivonas") < p_o) {
+				localStorage.setItem('top_kivonas', p_o);
+				init();
+				alert("Ügyes vagy, új rekord:"+p_o+" pont.");
+			}
+			}
+	</script>
+</div>
+
+</form>
+<button type=reset style="display:none" id="resetbutton" onclick="location.reload()">Új számokat kérek</button>
+<p><a href="index.html">Vissza a nyitólapra</a>
+</div>
+<!-- memil 2020 -->
+	</body>
+</html>
