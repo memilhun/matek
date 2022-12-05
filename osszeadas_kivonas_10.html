@@ -20,7 +20,7 @@ if (typeof(Storage) !== "undefined") {
   } else {	localStorage.setItem('top_osszeadas_10', '0');}
 // kivonas 
   if (localStorage.getItem("top_kivonas_10") > 0) {
-	var top_kivonas = localStorage.getItem('top_kivonas_10');
+	var top_kivonas_10 = localStorage.getItem('top_kivonas_10');
 	if (top_kivonas_10 != "") {
 	   document.getElementById("top_k").innerHTML = "<span>Eddigi legjobb kivonás eredményed 10-es számkörben= <span class=badge>" + top_kivonas_10+"</span>";
 	  } else {
