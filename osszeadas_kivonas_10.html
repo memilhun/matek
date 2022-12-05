@@ -8,8 +8,8 @@ function init() {
 if (typeof(Storage) !== "undefined") {
   // osszeadas
   if (localStorage.getItem("top_osszeadas_10") > 0) {
-	var top_osszeadas = localStorage.getItem('top_osszeadas_10');
-	if (top_osszeadas != "") {
+	var top_osszeadas_10 = localStorage.getItem('top_osszeadas_10');
+	if (top_osszeadas_10 != "") {
 	   document.getElementById("top_ossz").innerHTML = "<span>Eddigi legjobb összeadás eredményed 10-es számörben= <span class=badge>" + top_osszeadas_10+"</span>";
 	  } else {
 		top_osszeadas_10 = 0;
